@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yarinov.filemanagerapp.Audio.AudioListActivity;
+import com.yarinov.filemanagerapp.Image.ImageListActivity;
 import com.yarinov.filemanagerapp.InstallPackage.InstallPackageActivity;
 import com.yarinov.filemanagerapp.StorageInfo.StorageInfoActivity;
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout installAppsSection;
     TextView moreStorageInfo;
-    ImageView audioSectionIcon;
+    ImageView audioSectionIcon, imageSectionIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         installAppsSection = findViewById(R.id.installAppsSection);
         moreStorageInfo = findViewById(R.id.moreStorageInfoText);
         audioSectionIcon = findViewById(R.id.audioSectionIcon);
+        imageSectionIcon = findViewById(R.id.imageSectionIcon);
 
 
         //Open the installed apps section
@@ -63,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        //Open the Storage info section
+        imageSectionIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ImageListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         setPhoneSpaceText();
     }
 
