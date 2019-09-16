@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".StorageInfo.StorageInfoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                app:srcCompat="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15sp"
+                android:gravity="left"
+                android:text="Storage Information"
+                android:textColor="@color/White"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.hedan.piechart_library.PieChart_View
+        android:id="@+id/pie_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:padding="50dp"
+        app:alphaPieColor="#fff"
+        app:alphaPieTran="100"
+        app:alphaWidth="10dp"
+        app:animaDuration="3000"
+        app:isAnimation="true"
+        app:isTouchFlag="true"
+        app:mRadius="180dp"
+        app:name=" "
+        app:nameColor="@color/colorPrimaryDark"
+        app:nameOrientation="horizontal"
+        app:nameSize="16sp"
+        app:pieChartWidth="70dp"
+        app:segmentAngle="0.5"
+        app:startAngle="270"
+        app:textColor="#fff"
+        app:textOrientation="path"
+        app:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/sectionListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="2px"
+        android:scrollbars="none"
+        android:overScrollMode="never"/>
+
+
+
+
+</LinearLayout>
