@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
 import com.yarinov.filemanagerapp.R;
 
 
@@ -86,9 +87,11 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
         viewHolder.tv_foldersize.setVisibility(View.GONE);
 
 
+        Picasso.get().load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
+                .resize(400,400).centerCrop().into(viewHolder.iv_image);
 
-        Glide.with(context).load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
-                .into(viewHolder.iv_image);
+//        Glide.with(context).load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
+//                .into(viewHolder.iv_image);
 
 
         return convertView;

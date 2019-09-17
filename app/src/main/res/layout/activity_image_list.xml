@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10sp"
-        android:numColumns="2"/>
+        android:numColumns="3"
+        android:scrollbars="none"/>
 
 </LinearLayout>
