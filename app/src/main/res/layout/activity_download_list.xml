@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StorageInfo.StorageInfoActivity">
+    tools:context=".Download.DownloadListActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -32,54 +32,37 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="15sp"
                 android:gravity="left"
-                android:text="Storage Information"
+                android:text="Downloads"
                 android:textColor="@color/White"
                 android:textSize="18dp" />
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_marginRight="5sp"
+                    android:background="@drawable/ic_search" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10sp"
+                    android:background="@drawable/order_ic" />
+            </LinearLayout>
         </LinearLayout>
 
 
     </androidx.appcompat.widget.Toolbar>
 
-    <com.hedan.piechart_library.PieChart_View
-        android:id="@+id/pie_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginLeft="15sp"
-        android:layout_marginTop="15sp"
-        android:layout_marginRight="15sp"
-        android:layout_marginBottom="20sp"
-        android:padding="15sp"
-        app:alphaPieColor="#fff"
-        app:alphaPieTran="100"
-        app:alphaWidth="10dp"
-        app:animaDuration="3000"
-        app:isAnimation="true"
-        app:isTouchFlag="true"
-        app:mRadius="180dp"
-        app:name=" "
-        app:nameColor="@color/colorPrimaryDark"
-        app:nameOrientation="horizontal"
-        app:nameSize="16sp"
-        app:pieChartWidth="65dp"
-        app:segmentAngle="0.5"
-        app:startAngle="270"
-        app:textColor="#fff"
-        app:textOrientation="path"
-        app:textSize="18sp" />
-
     <ListView
-        android:id="@+id/sectionListView"
+        android:id="@+id/downloadsItemList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="2px"
-        android:scrollbars="none"
-        android:overScrollMode="never"/>
-
-
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

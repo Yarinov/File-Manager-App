@@ -145,7 +145,7 @@
                             app:srcCompat="@drawable/pic_ic" />
 
                         <ImageView
-                            android:id="@+id/imageView19"
+                            android:id="@+id/videoSectionIcon"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
                             android:layout_marginRight="50sp"

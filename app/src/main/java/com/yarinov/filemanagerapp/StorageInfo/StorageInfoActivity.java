@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,21 +16,29 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.hedan.piechart_library.PieChartBean;
 import com.hedan.piechart_library.PieChart_View;
 import com.yarinov.filemanagerapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class StorageInfoActivity extends AppCompatActivity {
 
     String [] sections;
     ListView sectionListView;
+
+    String [] sectionsColors;
+    int [] sectionValue;
 
     TextView sectionName, sectionSize;
     ProgressBar sectionProgressBar;
@@ -42,8 +51,10 @@ public class StorageInfoActivity extends AppCompatActivity {
         sectionListView = findViewById(R.id.sectionListView);
 
 
-        sections = new String[]{"Images", "Documents", "Videos", "Installed Apps", "Archive Files", "Audio", "Others"};
 
+        sections = new String[]{"Images", "Documents", "Videos", "Installed Apps", "Archive Files", "Audio", "Others", "Free Space"};
+        sectionsColors = new String[] {"#96D65E", "#5B995A", "#F8F17F", "#F3A800", "#B58F39" , "#824026", "#431F07", "#eeeeee"};
+        sectionValue = new int[] {1, 1, 1, 1, 1, 1, 1, 10};
 
         //Set the custom adapter to the list view
         CustomAdapter sectionCustomAdapter = new CustomAdapter();
@@ -52,19 +63,18 @@ public class StorageInfoActivity extends AppCompatActivity {
 
         PieChart_View pieView = (PieChart_View) findViewById(R.id.pie_view);
         ArrayList<PieChartBean> lists = new ArrayList<>();
-        lists.add(new PieChartBean(Color.parseColor("#ee3c5d"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#ffc12c"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#947ddf"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#1fde94"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#f5a623"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#fa734e"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#ee3c5d"), 1));
-        lists.add(new PieChartBean(Color.parseColor("#eeeeee"), 10));
+
+        for (int i = 0; i < sections.length; i++) {
+            lists.add(new PieChartBean(Color.parseColor(sectionsColors[i]), sectionValue[i]));
+        }
+
         pieView.setData(lists);
 
     }
 
-    class CustomAdapter extends BaseAdapter {
+
+
+    class CustomAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
@@ -92,15 +102,20 @@ public class StorageInfoActivity extends AppCompatActivity {
 
             sectionName = view.findViewById(R.id.sectionName);
             sectionSize = view.findViewById(R.id.sectionSize);
-            sectionProgressBar = view.findViewById(R.id.sectionProBar);
+           // sectionProgressBar = view.findViewById(R.id.sectionProBar);
 
             //Set the icon and app name
             sectionName.setText(String.valueOf(sections[i]));
-            sectionProgressBar.setProgress(20);
 
+            NumberProgressBar sectionProgressBar = view.findViewById(R.id.sectionProgressBar);
+
+            sectionProgressBar.setProgress(30);
+            sectionProgressBar.setReachedBarColor(Color.parseColor(sectionsColors[i]));
+            sectionProgressBar.setProgressTextColor(Color.parseColor("#000000"));
 
             return view;
         }
+
     }
 
 }
