@@ -4,15 +4,13 @@ public class DownloadItemInfo {
 
     private String itemName;
     private String itemSize;
-    private String itemType;
 
     public DownloadItemInfo() {
     }
 
-    public DownloadItemInfo(String itemName, String itemSize, String itemType) {
+    public DownloadItemInfo(String itemName, String itemSize) {
         this.itemName = itemName;
         this.itemSize = itemSize;
-        this.itemType = itemType;
     }
 
     public String getItemName() {
@@ -31,13 +29,7 @@ public class DownloadItemInfo {
         this.itemSize = itemSize;
     }
 
-    public String getItemType() {
-        return itemType;
-    }
 
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
 
 
 }

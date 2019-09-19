@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,13 +19,13 @@ import com.yarinov.filemanagerapp.R;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DownloadListActivity extends AppCompatActivity {
 
     ListView downloadsItemList;
 
-    private ArrayList<DownloadItemInfo> downloads = new ArrayList<DownloadItemInfo>();
-
+    private File[] downloads;
     private TextView downloadFileName, downloadFileDet;
 
     @Override
@@ -35,48 +36,48 @@ public class DownloadListActivity extends AppCompatActivity {
 
         downloadsItemList = findViewById(R.id.downloadsItemList);
 
+
+        File downloadDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+
+        downloads = getFilesFromDir(downloadDir);
+
         //Set the custom adapter to the list view
         CustomAdapter appCustomAdapter = new CustomAdapter();
 
         downloadsItemList.setAdapter(appCustomAdapter);
-
-        loadDownloads();
-
-
     }
 
-    private void loadDownloads(){
-        File downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-       // downloads = downloadPath.list();
-        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String selection = MediaStore.Audio.Media.IS_MUSIC+"!=0";
-        Cursor cursor = getContentResolver().query(uri,null,selection,null,null);
-        if(cursor != null){
-            if(cursor.moveToFirst()){
-                do{
+    public File[] getFilesFromDir(File filesFromSD) {
 
-                    String name = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
-                    String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                    String url = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+        File listAllFiles[] = filesFromSD.listFiles();
 
-                    DownloadItemInfo d = new DownloadItemInfo(name,artist,url);
-                    downloads.add(d);
+        if (listAllFiles != null && listAllFiles.length > 0) {
+            for (File currentFile : listAllFiles) {
+                if (currentFile.isDirectory()) {
+                    getFilesFromDir(currentFile);
+                } else {
+                    if (currentFile.getName().endsWith("")) {
+                        // File absolute path
+                        Log.e("File path", currentFile.getAbsolutePath());
+                        // File Name
+                        Log.e("File path", currentFile.getName());
 
-                }while (cursor.moveToNext());
+                    }
+                }
             }
-
-            cursor.close();
-
-
         }
+
+        return listAllFiles;
     }
+
 
     class CustomAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
             //Return the size of arraylist -> The amount of installed apps
-            return downloads.size();
+            return downloads.length;
         }
 
         @Override
@@ -94,16 +95,18 @@ public class DownloadListActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             //Set the custom layout as the current view
-            view = getLayoutInflater().inflate(R.layout.custom_audio_list, null);
+            view = getLayoutInflater().inflate(R.layout.custom_items_list, null);
 
-            DownloadItemInfo downloadFile = downloads.get(i);
+            File downloadFile = downloads[i];
 
-            downloadFileName = view.findViewById(R.id.audioNameInList);
-            downloadFileDet = view.findViewById(R.id.audioDetInList);
+            downloadFileName = view.findViewById(R.id.nameInList);
+            downloadFileDet = view.findViewById(R.id.detInList);
 
             //Set the icon and app name
-            downloadFileName.setText(downloadFile.getItemName());
-            downloadFileDet.setText(downloadFile.getItemSize());
+            downloadFileName.setText(downloadFile.getName());
+
+            double fileSize = Double.parseDouble(String.valueOf(downloadFile.length()/(1024*1024)));
+            downloadFileDet.setText(fileSize + " MB");
 
 
             return view;

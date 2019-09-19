@@ -1,16 +1,10 @@
 package com.yarinov.filemanagerapp.Audio;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -18,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.yarinov.filemanagerapp.InstallPackage.InstallPackageActivity;
 import com.yarinov.filemanagerapp.R;
 
 import java.util.ArrayList;
@@ -102,12 +94,12 @@ public class AudioListActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             //Set the custom layout as the current view
-            view = getLayoutInflater().inflate(R.layout.custom_audio_list, null);
+            view = getLayoutInflater().inflate(R.layout.custom_items_list, null);
 
             AudioInfo audioFile = _songs.get(i);
 
-            audioFileName = view.findViewById(R.id.audioNameInList);
-            audioFileDet = view.findViewById(R.id.audioDetInList);
+            audioFileName = view.findViewById(R.id.nameInList);
+            audioFileDet = view.findViewById(R.id.detInList);
 
             //Set the icon and app name
             audioFileName.setText(audioFile.getSongname());

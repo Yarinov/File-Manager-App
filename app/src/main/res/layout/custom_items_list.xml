@@ -6,7 +6,7 @@
     android:layout_gravity="center">
 
     <ImageView
-        android:id="@+id/appImageInList"
+        android:id="@+id/ImageInList"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:layout_gravity="center"
@@ -23,7 +23,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/audioNameInList"
+            android:id="@+id/nameInList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="3sp"
@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/audioDetInList"
+            android:id="@+id/detInList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />

@@ -73,13 +73,12 @@ public class StorageInfoActivity extends AppCompatActivity {
     }
 
 
-
     class CustomAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
             //Return the size of arraylist -> The amount of installed apps
-            return sections.length;
+            return sections.length-1;
         }
 
         @Override

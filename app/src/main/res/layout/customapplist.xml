@@ -6,7 +6,7 @@
     android:layout_gravity="center">
 
     <ImageView
-        android:id="@+id/appImageInList"
+        android:id="@+id/ImageInList"
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:layout_gravity="center"

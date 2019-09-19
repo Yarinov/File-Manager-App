@@ -152,7 +152,7 @@
                             app:srcCompat="@drawable/video_ic" />
 
                         <ImageView
-                            android:id="@+id/imageView20"
+                            android:id="@+id/downloadSectionIcon"
                             android:layout_width="50sp"
                             android:layout_height="50sp"
                             app:srcCompat="@drawable/download_ic" />

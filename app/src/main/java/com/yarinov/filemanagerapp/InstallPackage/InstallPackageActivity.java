@@ -94,7 +94,7 @@ public class InstallPackageActivity extends AppCompatActivity {
 
             ApplicationInfo app = installedApps.get(i);
 
-            appImage = view.findViewById(R.id.appImageInList);
+            appImage = view.findViewById(R.id.ImageInList);
             appName = view.findViewById(R.id.appNameInList);
             appDet = view.findViewById(R.id.appDetInList);
 

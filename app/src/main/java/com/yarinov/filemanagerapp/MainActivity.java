@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yarinov.filemanagerapp.Audio.AudioListActivity;
+import com.yarinov.filemanagerapp.Download.DownloadListActivity;
 import com.yarinov.filemanagerapp.Image.ImageListActivity;
 import com.yarinov.filemanagerapp.InstallPackage.InstallPackageActivity;
 import com.yarinov.filemanagerapp.StorageInfo.StorageInfoActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout installAppsSection;
     TextView moreStorageInfo;
-    ImageView audioSectionIcon, imageSectionIcon, videoSectionIcon;
+    ImageView audioSectionIcon, imageSectionIcon, videoSectionIcon, downloadSectionIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,22 @@ public class MainActivity extends AppCompatActivity {
         audioSectionIcon = findViewById(R.id.audioSectionIcon);
         imageSectionIcon = findViewById(R.id.imageSectionIcon);
         videoSectionIcon = findViewById(R.id.videoSectionIcon);
+        downloadSectionIcon = findViewById(R.id.downloadSectionIcon);
 
         //Open the installed apps section
         videoSectionIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, VideoListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Open the installed apps section
+        downloadSectionIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DownloadListActivity.class);
                 startActivity(intent);
             }
         });

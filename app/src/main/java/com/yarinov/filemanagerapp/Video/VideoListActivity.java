@@ -97,13 +97,13 @@ public class VideoListActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             //Set the custom layout as the current view
-            view = getLayoutInflater().inflate(R.layout.custom_audio_list, null);
+            view = getLayoutInflater().inflate(R.layout.custom_items_list, null);
 
             VideoInfo videoFile = videos.get(i);
 
-            videoFileName = view.findViewById(R.id.audioNameInList);
-            videoFileDet = view.findViewById(R.id.audioDetInList);
-            imageInList = view.findViewById(R.id.appImageInList);
+            videoFileName = view.findViewById(R.id.nameInList);
+            videoFileDet = view.findViewById(R.id.detInList);
+            imageInList = view.findViewById(R.id.ImageInList);
 
             //Set the icon and app name
             videoFileName.setText(videoFile.getVideoName());
