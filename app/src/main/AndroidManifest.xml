@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Video.VideoListActivity"></activity>
+        <activity android:name=".Image.ImageListActivity"></activity>
+        <activity android:name=".Image.ImageAlbumActivity" />
+        <activity android:name=".Video.VideoListActivity" />
         <activity android:name=".Download.DownloadListActivity" />
-        <activity android:name=".Image.PhotosActivity" />
         <activity android:name=".Document.DocumentListActivity" />
-        <activity android:name=".Image.ImageListActivity" />
         <activity android:name=".Audio.AudioListActivity" />
         <activity android:name=".StorageInfo.StorageInfoActivity" />
         <activity android:name=".InstallPackage.InstallPackageActivity" />
@@ -25,8 +25,9 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

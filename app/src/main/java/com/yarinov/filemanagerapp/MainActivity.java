@@ -5,14 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout installAppsSection;
     TextView moreStorageInfo;
     ImageView audioSectionIcon, imageSectionIcon, videoSectionIcon, downloadSectionIcon;
+
+    Long imageSize, audioSize, docSize, videoSize, installedAppSize, archiveSize, othersSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setPhoneSpaceText();
+
+
     }
 
 
@@ -151,4 +151,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
